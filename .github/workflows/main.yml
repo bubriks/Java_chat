@@ -27,8 +27,10 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         
-      - name: Only run this if file README exists
-        run: '(test -f README && echo README exists) || echo README does not exist, skipping step'
+      - name: "Check file existence"
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "package.json, LICENSE, README.md"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
