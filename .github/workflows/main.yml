@@ -51,7 +51,9 @@ jobs:
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ $changed_file == *.yml ]]; then
               
-              echo -n '2p' $changed_file
+              cat sample_data_1.txt
+              x = sed -n '2p'
+              echo "x: ${x}."
               
               content=`cat ${changed_file}`
               echo "Contents: ${content}."
