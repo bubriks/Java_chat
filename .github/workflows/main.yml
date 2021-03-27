@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ALLOWED_FOLDERS: '.github/workflows, file2'
+      ALLOWED_FOLDERS: '.github/workflows file2'
 
     steps:
       - uses: actions/checkout@v2
@@ -21,16 +21,18 @@ jobs:
           files: "projects/chat_project/pom.xml, README.md"
 
       - id: changed-files
+        name: Get changed files
         uses: jitterbit/get-changed-files@v1
 
       - id: changes_in_allowed_folders
-        name: Are changes in correct places
+        name: Are changes in correct folders
         run: |
           for folder in ${{ env.ALLOWED_FOLDERS }}; do
-            echo "Folder: ${folder}."
+            echo "Folder: ${folder}"
           done
 
       - id: check-changed-md-file-content
+        name: Are markup files correct
         run: |
           echo ${{ steps.changed-files.outputs.all }}
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
