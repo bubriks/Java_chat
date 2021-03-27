@@ -49,7 +49,7 @@ jobs:
         run: |
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ $changed_file == *.yml ]]; then
-              bash .github/workflows/main.yml | sed -n '2 p'
+              cat .github/workflows/main.yml | sed -n '2 p'
               
               content=`cat ${changed_file}`
               echo "Contents: ${content}."
