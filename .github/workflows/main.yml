@@ -19,8 +19,6 @@ jobs:
 
       - id: files
         uses: jitterbit/get-changed-files@v1
-        with:
-          format: 'json'
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             content=`cat ${changed_file}`
