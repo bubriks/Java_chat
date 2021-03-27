@@ -31,7 +31,7 @@ jobs:
           
             found=false
             for folder in ${{ env.ALLOWED_FOLDERS }}; do
-              if [[ $changed_file == folder ]]; then
+              if [[ $changed_file == folder/* ]]; then
                 found=true
                 break
               fi
