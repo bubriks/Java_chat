@@ -47,13 +47,11 @@ jobs:
       - id: check-changed-md-file-content
         name: Are markup files correct
         run: |
-          echo ${{ steps.changed-files.outputs.all }}
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ $changed_file == *.yml ]]; then
+              line = 2
               
-              cat $changed_file
-              x = sed -n '2p'
-              echo "x: ${x}."
+              cat $changed_file | sed -n '${line}p'
               
               content=`cat ${changed_file}`
               echo "Contents: ${content}."
