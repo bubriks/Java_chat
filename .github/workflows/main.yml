@@ -31,17 +31,14 @@ jobs:
           
             found=false
             for folder in ${{ env.ALLOWED_FOLDERS }}; do
-              echo $changed_file
-              echo $folder
-              
               if [[ $changed_file == $folder* ]]; then
-                echo found
                 found=true
                 break
               fi
             done
             
             if [[ $found == false ]]; then
+              echo Action performed on file outside permited folder: $changed_file
               exit 1
             fi
             
@@ -53,6 +50,9 @@ jobs:
           echo ${{ steps.changed-files.outputs.all }}
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[ $changed_file == *.yml ]]; then
+              
+              echo -n '2p' $changed_file
+              
               content=`cat ${changed_file}`
               echo "Contents: ${content}."
             fi
