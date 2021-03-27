@@ -51,7 +51,7 @@ jobs:
             if [[ $changed_file == *.yml ]]; then
               line = 2
               
-              cat $changed_file | sed -n '${line}p'
+              cat $changed_file | sed -n '2p'
               
               content=`cat ${changed_file}`
               echo "Contents: ${content}."
