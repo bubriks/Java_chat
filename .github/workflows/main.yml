@@ -34,7 +34,8 @@ jobs:
               echo $changed_file
               echo $folder
               
-              if [[ $changed_file == folder* ]]; then
+              if [[ $changed_file == $folder* ]]; then
+                echo found
                 found=true
                 break
               fi
