@@ -23,5 +23,7 @@ jobs:
           format: 'json'
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "Do something with this ${changed_file}."
+            if: contains(changed_file, 'workflox'); then
+              echo "Do something with this ${changed_file}."
+            fi
           done
