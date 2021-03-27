@@ -23,7 +23,7 @@ jobs:
       - id: folder_list
         uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
         with:
-          stringArray: env.ALLOWED_FOLDERS
+          stringArray: '[".github/workflows","file2"]'
 
       - id: changed-files
         uses: jitterbit/get-changed-files@v1
