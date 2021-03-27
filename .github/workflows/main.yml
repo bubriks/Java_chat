@@ -17,10 +17,44 @@ jobs:
           allow_failure: true
           files: "projects/chat_project/pom.xml, README.md"
 
-      - id: files
+      - id: changed-files
         uses: jitterbit/get-changed-files@v1
+
+      - id: check-changed-md-file-content
       - run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            content=`cat ${changed_file}`
-            echo "Do something with this ${content}."
+          for changed_file in ${{ steps.changed-files.outputs.all }}; do
+            if [[${changed_file} = "**/*.yml ]]; then
+              content=`cat ${changed_file}`
+              echo "Do something with this ${content}."
+            fi
           done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
