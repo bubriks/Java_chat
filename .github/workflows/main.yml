@@ -29,9 +29,10 @@ jobs:
         uses: jitterbit/get-changed-files@v1
 
       - id: changes_in_allowed_folders
+        name: Are changes in correct places
         run: |
           for folder in ${{ steps.folder_list.outputs.stringList }}; do
-            echo "Contents: ${folder}."
+            echo "Folder: ${folder}."
           done
 
 
