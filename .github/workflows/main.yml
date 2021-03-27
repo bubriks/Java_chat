@@ -23,6 +23,6 @@ jobs:
           format: 'json'
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            content=`cat changed_file`
+            content=`cat ${changed_file}`
             echo "Do something with this ${content}."
           done
