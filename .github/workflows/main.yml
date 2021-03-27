@@ -21,7 +21,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
 
       - id: check-changed-md-file-content
-      - run: |
+        run: |
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
             if [[${changed_file} = **/*.yml ]]; then
               content=`cat ${changed_file}`
