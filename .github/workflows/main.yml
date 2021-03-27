@@ -23,7 +23,7 @@ jobs:
       - id: check-changed-md-file-content
         run: |
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
-            if [[ $changed_file == *.yml ]]; then
+            if [[ $changed_file == *.ym ]]; then
               content=`cat ${changed_file}`
               echo "Do something with this ${content}."
             fi
