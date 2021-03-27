@@ -27,8 +27,20 @@ jobs:
       - id: changes_in_allowed_folders
         name: Are changes in correct folders
         run: |
-          for folder in ${{ env.ALLOWED_FOLDERS }}; do
-            echo "Folder: ${folder}"
+          for changed_file in ${{ steps.changed-files.outputs.all }}; do
+          
+            found=false
+            for folder in ${{ env.ALLOWED_FOLDERS }}; do
+              if [[ $changed_file == folder ]]; then
+                found=true
+                break
+              fi
+            done
+            
+            if [[ $found == false ]]; then
+              exit 1
+            fi
+            
           done
 
       - id: check-changed-md-file-content
