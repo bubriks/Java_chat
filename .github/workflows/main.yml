@@ -27,8 +27,9 @@ jobs:
       - id: changes_in_allowed_folders
         name: Are changes in correct folders
         run: |
+          ls
           for changed_file in ${{ steps.changed-files.outputs.all }}; do
-          
+            echo $changed_file
             found=false
             for folder in ${{ env.ALLOWED_FOLDERS }}; do
               if [[ $changed_file == $folder* ]]; then
